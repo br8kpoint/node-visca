@@ -27,11 +27,11 @@ export class SerialTransport extends EventEmitter implements ViscaTransport {
 		// open the serial port
 		try {
 			this.serialport = new SerialPort( this.portname, { baudRate: this.baudRate, autoOpen:false } );
-			this.serailport.open(function(err){
-				if (err) {
-    					return console.log('Error opening port: ', err.message)
-  				}
-			});
+			this.serialport.open((err: any) => {
+					if (err) {
+						return console.log('Error opening port: ', err.message);
+					}
+				});
 			this.serialport.on( 'open', this.onOpen );   // provides error object
 			this.serialport.on( 'close', this.onClose ); // if disconnected, err.disconnected == true
 			this.serialport.on( 'error', this.onError ); // provides error object
