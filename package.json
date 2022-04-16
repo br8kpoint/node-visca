@@ -2,7 +2,7 @@
   "helpful-urls": [
     "https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd"
   ],
-  "name": "@utopian/visca",
+  "name": "@br8kppooint/visca",
   "version": "0.0.17",
   "description": "Advanced nodejs library for working with VISCA-based PTZ cameras over IP and over serial connections.",
   "main": "dist/visca.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/utopiantools/node-visca.git"
+    "url": "git+https://github.com/br8kpoint/node-visca.git"
   },
   "files": [
     "dist/**/*"
@@ -31,7 +31,7 @@
     "javascript",
     "nodejs"
   ],
-  "author": "Jeff Mikels",
+  "author": "Mike Fair",
   "license": "ISC",
   "dependencies": {
     "node-hid": "^2.1.1",
@@ -46,7 +46,7 @@
     "typescript": "^4.1.3"
   },
   "bugs": {
-    "url": "https://github.com/utopiantools/node-visca/issues"
+    "url": "https://github.com/br8kpoint/node-visca/issues"
   },
-  "homepage": "https://github.com/utopiantools/node-visca#readme"
+  "homepage": "https://github.com/br8kpoint/node-visca#readme"
 }
