@@ -2,7 +2,7 @@
 import {EventEmitter} from 'events'
 import { v4 as uuid } from 'uuid'
 // import SerialPort = require("serialport")
-import SerialPort  from 'serialport';
+import { SerialPort } from 'serialport'
 import { ViscaCommand } from './command';
 import { ViscaTransport } from './transport'
 const Delimiter = require( '@serialport/parser-delimiter' );
@@ -26,7 +26,7 @@ export class SerialTransport extends EventEmitter implements ViscaTransport {
 
 		// open the serial port
 		try {
-			this.serialport = new SerialPort( this.portname, { baudRate: this.baudRate, autoOpen:false } );
+			this.serialport = new SerialPort( {path:this.portname, baudRate: this.baudRate, autoOpen:false } );
 			this.serialport.open((err: any) => {
 					if (err) {
 						return console.log('Error opening port: ', err.message);
