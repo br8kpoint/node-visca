@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid'
 import { SerialPort } from 'serialport'
 import { ViscaCommand } from './command';
 import { ViscaTransport } from './transport'
-const Delimiter = require( '@serialport/parser-delimiter' );
+const { DelimiterParser } = require('@serialport/parser-delimiter')
 
 // simply implements a visca transport over the serial interface
 export class SerialTransport extends EventEmitter implements ViscaTransport {
@@ -36,7 +36,7 @@ export class SerialTransport extends EventEmitter implements ViscaTransport {
 			this.serialport.on( 'close', this.onClose ); // if disconnected, err.disconnected == true
 			this.serialport.on( 'error', this.onError ); // provides error object
 
-			this.serialport.pipe( new Delimiter( { delimiter: [ 0xff ] } ) )
+			this.serialport.pipe( new DelimiterParser( { delimiter: [ 0xff ] } ) )
 			.on( 'data', this.onData );       // provides a Buffer object
 
 		} catch ( e ) {
