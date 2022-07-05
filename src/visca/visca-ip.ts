@@ -97,14 +97,14 @@ export class UDPTransport extends EventEmitter {
 	open() {
 		// creating a client socket
 		this.socket = udp.createSocket( 'udp4' );
-
+		let self = this;
 		// handle replies
 		this.socket.on( 'message', function ( msg, info ) {
 			console.log( 'Received %d bytes from %s:%d\n', msg.length, info.address, info.port );
-			this.onData( [...msg] );
+			self.onData( [...msg] );
 		} );
 		this.socket.on("error", (e) => {
-			this.emit("error", e);
+			self.emit("error", e);
 		});
 	}
 
