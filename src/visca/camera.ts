@@ -413,6 +413,7 @@ export class Camera extends EventEmitter {
 	// the ack tells us which socket received it
 	sendCommand(command:ViscaCommand) {
 		// update the header data
+		this._updateBooleans();
 		command.source = 0;
 		command.recipient = this.index;
 		command.broadcast = false;
