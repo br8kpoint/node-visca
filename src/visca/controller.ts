@@ -52,15 +52,16 @@ export class ViscaController extends EventEmitter {
 	}
 
 	// uuid will be specified when the data comes from an IP camera
-	addIPCamera(c: ViscaCameraConfig) {
+	addIPCamera(c: ViscaCameraConfig):Camera {
 		let transport = new UDPTransport(c.ip, c.port);
-		transport.on('data', this.onUDPData);
+		transport.on('data', this.onUDPData.bind(this));
 
 		let camera = new Camera(1, transport); // IP cameras all have index 1
 		this.cameras[transport.uuid] = camera;
 
 		camera.sendCommand(ViscaCommand.cmdInterfaceClearAll(1));
 		camera.inquireAll();
+		return camera;
 	}
 
 
