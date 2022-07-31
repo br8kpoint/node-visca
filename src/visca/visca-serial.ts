@@ -26,6 +26,7 @@ export class SerialTransport extends EventEmitter implements ViscaTransport {
 
 		// open the serial port
 		try {
+<<<<<<< Updated upstream
 			this.serialport = new SerialPort( {path:this.portname, baudRate: this.baudRate, autoOpen:false } );
 			this.serialport.open((err: any) => {
 					if (err) {
@@ -38,6 +39,25 @@ export class SerialTransport extends EventEmitter implements ViscaTransport {
 
 			this.serialport.pipe( new DelimiterParser( { delimiter: [ 0xff ] } ) )
 			.on( 'data', this.onData );       // provides a Buffer object
+=======
+			this.serialport = new SerialPort( this.portname, { baudRate: this.baudRate, autoOpen: false } );
+			this.serialport.on( 'open', this.onOpen.bind(this) );   // provides error object
+			this.serialport.on( 'close', this.onClose.bind(this) ); // if disconnected, err.disconnected == true
+			this.serialport.on( 'error', this.onError.bind(this) ); // provides error object
+
+			this.serialport.pipe( new Delimiter( { delimiter: [ 0xff ] } ) )
+			.on( 'data', this.onData.bind(this) );       // provides a Buffer object
+			this.serialport.open((err)=>{
+				if(err){
+					console.log("################### Error opening serial port "+ this.portname +":");
+					console.log(err);
+				}else{
+					console.log("################### " + this.portname +" successfully opened!!");
+				}
+				
+				
+			})
+>>>>>>> Stashed changes
 
 		} catch ( e ) {
 			console.log( `Exception opening serial port '${this.portname}' for (display) ${e}\n` );
@@ -49,7 +69,11 @@ export class SerialTransport extends EventEmitter implements ViscaTransport {
 
 	onOpen() { this.started = true; this.emit( 'open' ); }
 	onClose( e :string ) { console.log( e ); this.started = false; this.emit( 'close' ); }
-	onError( e :string ) { console.log( e ); this.started = false; this.emit( 'error', e ); }
+	onError( e :string ) { 
+		console.log( e ); 
+		this.started = false; 
+		this.emit( 'error', e ); 
+	}
 
 	onData( packet:Buffer ) {
 		// the socket parser gives us only full visca packets
