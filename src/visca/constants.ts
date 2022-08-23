@@ -118,6 +118,11 @@ let Constants :{[index:string] : any} = {
     OP_PAN_RELATIVE: 0X03,         // VV WW 0Y 0Y 0Y 0Y 0Z 0Z 0Z 0Z
     OP_PAN_MAX_SPEED: 0x11,        // (inquire only) VV WW
     OP_PAN_POS: 0x12,              // (inquire only) 0Y 0Y 0Y 0Y 0Z 0Z 0Z 0Z
+    OP_PAN_UP: 0x01,
+    OP_PAN_DOWN:0x2,
+    OP_PAN_LEFT:0X01,
+    OP_PAN_RIGHT:0X02,
+    OP_PAN_NONE:0x03,
     // VV: pan speed
     // WW: tilt speed
     // p: pan move 1-left, 2-right, 3-none

@@ -326,6 +326,30 @@ export class ViscaCommand {
 		let subcmd = [ C.OP_PAN_DRIVE, xspeed, yspeed, xmode, ymode ];
 		return ViscaCommand.cmdOp( device, subcmd, 'camera pan/tilt' );
 	}
+	static cmdCameraPanTiltUp( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_NONE,C.OP_PAN_UP)
+	}
+	static cmdCameraPanTiltDown( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_NONE,C.OP_PAN_DOWN)
+	}
+	static cmdCameraPanTiltLeft( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_LEFT,C.OP_PAN_NONE)
+	}
+	static cmdCameraPanTiltRight( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_RIGHT,C.OP_PAN_NONE)
+	}
+	static cmdCameraPanTiltUpLeft( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_LEFT,C.OP_PAN_UP)
+	}
+	static cmdCameraPanTiltDownLeft( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_LEFT,C.OP_PAN_DOWN)
+	}
+	static cmdCameraPanTiltDownRight( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_RIGHT,C.OP_PAN_DOWN)
+	}
+	static cmdCameraPanTiltUpRight( device: number, xspeed: number, yspeed: number ) {
+		return this.cmdCameraPanTilt(device,xspeed,yspeed,C.OP_PAN_RIGHT,C.OP_PAN_UP)
+	}
 	// x and y are signed 16 bit integers, 0x0000 is center
 	// range is -2^15 - 2^15 (32768)
 	// relative defaults to false
