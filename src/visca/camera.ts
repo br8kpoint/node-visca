@@ -405,7 +405,7 @@ export class Camera extends EventEmitter {
 	_scheduleUpdate() {
 		if (this.updatetimer != null) return;
 		if (this.inquiryQueue.length > 0 || this.commandQueue.length > 0) {
-			this.updatetimer = setTimeout(this._update, 25);
+			this.updatetimer = setTimeout(this._update.bind(this), 25);
 		}
 	}
 
