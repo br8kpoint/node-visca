@@ -3,7 +3,7 @@
     "https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd"
   ],
   "name": "@br8kppooint/visca",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Advanced nodejs library for working with VISCA-based PTZ cameras over IP and over serial connections.",
   "main": "dist/visca/visca.js",
   "types": "dist/visca/visca.d.ts",
